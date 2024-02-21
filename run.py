@@ -22,14 +22,14 @@ def obter_endereco_ip():
 if __name__ == '__main__':
     ip_servidor = obter_endereco_ip()
     if ip_servidor:
-        data = {
-            "server_ip": ip_servidor,
-            "port": "5000"
-        }
-        w_json(f"{PATH_READER_DATA}/server.json", data)
+        # data = {
+        #     "server_ip": ip_servidor,
+        #     "port": "5000"
+        # }
+        # w_json(f"{PATH_READER_DATA}/server.json", data)
         
         app.run(host='0.0.0.0', port=5000, debug=True)
-        
+        print(ip_servidor)
     else:
         print("Não foi possível obter o endereço IP do servidor.")
 

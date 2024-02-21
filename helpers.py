@@ -2,7 +2,7 @@ import os
 import datetime
 from datetime import timezone
 import pytz
-
+import random
 
 class Helpers:
     def __init__(self) -> None:
@@ -27,3 +27,8 @@ class Helpers:
         data_formatada = data_utc.astimezone(fuso_horario)
 
         return {'utc_file_timestamp': data_utc, 'formated_file_timestamp': data_formatada}
+    
+    @staticmethod
+    def generateRandomNum(qtd):
+        random_nums = [str(random.random()) for _ in range(qtd)]
+        return ', '.join(random_nums)

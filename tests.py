@@ -1,20 +1,8 @@
-from flask import Flask, request
+from datetime import datetime
 
-#teste
 
-app = Flask(__name__)
+now = datetime.now()
 
-class SaveIPMiddleware:
-    def __init__(self, app):
-        self.app = app
-        self.client_ip = None
-
-    def __call__(self, environ, start_response):
-        self.client_ip = environ.get('REMOTE_ADDR', 'IP Desconhecido')
-        return self.app(environ, start_response)
-
-app.wsgi_app = SaveIPMiddleware(app.wsgi_app)
-
-if __name__ == "__main__":
-    print(f"IP do cliente ao iniciar a aplicação: {app.wsgi_app.client_ip}")
-    app.run(debug=True)
+formatted_timestamp = f"{now.day:02}/{now.month:02}/{now.year} - {now.strftime('%H:%M:%S.%f')[:-3]}"
+# 22/02/2024 - 15:04:34.946
+print("Timestamp formatado:", formatted_timestamp)
